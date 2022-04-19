@@ -1,10 +1,7 @@
+
 import React from 'react';
-
-
 import { BiggerContainer, SmallerContainer, StatsCard, GeneralStyledDiv } from './StyledCard';
-
 function Card(props) {
-
 
   return (
     <GeneralStyledDiv>
@@ -15,6 +12,9 @@ function Card(props) {
             </SmallerContainer>
             <StatsCard>
                 statusPokemon
+            <SmallerContainer src={props.pokemon.name} alt={props.pokemon.name}/>
+            <StatsCard>
+                {props.pokemon.name.toUpperCase()}
             </StatsCard>
         </BiggerContainer>
     </GeneralStyledDiv>

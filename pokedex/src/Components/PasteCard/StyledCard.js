@@ -14,7 +14,7 @@ export const BiggerContainer = styled.div`
   padding: 10px;
   border-radius: 5px;
 `;
-export const SmallerContainer = styled.div`
+export const SmallerContainer = styled.img`
  display: flex;
  justify-content: center;
  margin-top: 30px;
@@ -24,8 +24,9 @@ export const SmallerContainer = styled.div`
 
 export const StatsCard = styled.div`
  background-color: white;
- justify-content: center;
  width: 200px;
  height: 100px;
  border-radius: 5px;
+ text-align: center;
+ font-family: sans-serif;
 `

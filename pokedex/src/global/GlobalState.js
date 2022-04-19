@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { GlobalStateContext } from "../global/GlobalStateContext"
 import axios from "axios"
+import { BASE_URL } from "../constants/url"
 
 const GlobalState = (props) => {
     const [ pokelist, setPokelist ] = useState([])
@@ -8,7 +9,7 @@ const GlobalState = (props) => {
 
     const listPokemons = () => {
         axios
-            .get(`https://pokeapi.co/api/v2/pokemon/?limit=20`)
+            .get(`${BASE_URL}?limit=20`)
             .then((res) => {
                 setPokelist(res.data.results)
             })

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const NavBar = styled.nav`
   background-color: #f01d1eff;
-  padding: 8px;
+  padding: 8px 40px 8px 8px;
   border-bottom: 10px solid #000;
 `;
 
@@ -20,7 +20,7 @@ const BallDetails = styled.div`
   width: 50px;
   height: 50px;
   margin-left: 600px;
-  margin-top: -20px;
+  margin-top: -15px;
   z-index: 2;
   border-radius: 100px;
   border: 4px ridge black;
@@ -51,11 +51,11 @@ function Header() {
           alt="fonte-de-pokemon"
           border="0"
         />
-
         <BallDetails>
           <BallDetails2 />
-        </BallDetails>
+        </BallDetails>    
       </NavBar>
+      
     </div>
   );
 }

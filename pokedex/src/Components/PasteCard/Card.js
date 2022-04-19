@@ -1,16 +1,20 @@
 import React from 'react';
+
+
 import { BiggerContainer, SmallerContainer, StatsCard, GeneralStyledDiv } from './StyledCard';
 
-function Card() {
+function Card(props) {
+
+
   return (
     <GeneralStyledDiv>
         
         <BiggerContainer>
             <SmallerContainer>
-                IMG
+              imagem pokemon
             </SmallerContainer>
             <StatsCard>
-                Stats Pokemon
+                statusPokemon
             </StatsCard>
         </BiggerContainer>
     </GeneralStyledDiv>

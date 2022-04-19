@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import {useNavigate} from "react-router-dom"
-import Card from "../../Components/PasteCard/Card"
+import Card from "../../components/PasteCard/Card"
 import {goToPokedexPage, goToDetailPage} from "../Router/Coodinator"
 import styled from "styled-components";
 import { GlobalStateContext } from '../../global/GlobalStateContext'

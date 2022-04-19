@@ -1,15 +1,14 @@
 import React from "react";
 import Router from "./Pages/Router/Router";
 import Header from "./Components/PasteHeader/Header";
-import Card from "./Components/PasteCard/Card";
+import GlobalState from './global/GlobalState'
 
 function App() {
   return (
-    <div>
+    <GlobalState>
       <Header />
       <Router />
-      <Card />
-    </div>
+    </GlobalState>
   );
 }
 

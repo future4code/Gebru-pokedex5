@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { BiggerContainer, SmallerContainer, StatsCard, GeneralStyledDiv } from './StyledCard';
+
 function Card(props) {
 
   return (
@@ -8,14 +9,13 @@ function Card(props) {
         
         <BiggerContainer>
             <SmallerContainer>
-              imagem pokemon
+              <img src={props.pokemon.name} alt={props.pokemon.name} />
             </SmallerContainer>
             <StatsCard>
                 statusPokemon
-            <SmallerContainer src={props.pokemon.name} alt={props.pokemon.name}/>
-            <StatsCard>
                 {props.pokemon.name.toUpperCase()}
             </StatsCard>
+            <button onClick={() => {addPokeToPokedex(props.pokemon)}}>ADICIONAR A POKEDEX</button>
         </BiggerContainer>
     </GeneralStyledDiv>
   )

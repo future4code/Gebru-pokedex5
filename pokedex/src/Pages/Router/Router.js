@@ -11,7 +11,7 @@ const Router = () => {
                 <Route index element={<HomePage/>}/>
                 <Route path="/pokedex" element={<PokedexPage/>}/>
                 <Route path="/detail" element={<DetailPage/>}/>
-                {/* <Route path="*" element={<ErrorPage/>}/> */}
+                <Route path="*" element={<h1> ERRO! Página não encontrada </h1>}/>
             </Routes>
         </BrowserRouter>
     )

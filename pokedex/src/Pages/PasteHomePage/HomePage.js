@@ -17,24 +17,29 @@ const Container = styled.div`
 export function HomePage (){
     const navigate = useNavigate()
     const { states, requests } = useContext(GlobalStateContext)
-    const pokelist = states
+    const pokelist = states.pokelist
     const listPokemons = requests
 
     useEffect(() => {
        listPokemons()
-
     }, [])
 
     console.log(pokelist)
 
    
     const renderedPokemons = pokelist && pokelist.map((poke) => {
-        return <Card key={poke.name} id={poke.name} pokemon={poke} />
+        return(
+            <div>
+                <Card key={poke.name} id={poke.name} pokemon={poke} />
+            </div>
+        )
     })
     
     return(
         <div>
-            <Container>{renderedPokemons}</Container>
+            <Container>
+                {renderedPokemons}
+            </Container>
             <button onClick={() => goToPokedexPage(navigate)}> Pokedex </button>
             <button onClick={() => goToDetailPage(navigate)}> Detail </button>
         </div>

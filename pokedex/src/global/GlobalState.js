@@ -5,7 +5,6 @@ import axios from "axios"
 const GlobalState = (props) => {
     const [ pokelist, setPokelist ] = useState([])
 
-
     const listPokemons = () => {
         axios
             .get(`https://pokeapi.co/api/v2/pokemon/?limit=20`)
@@ -16,6 +15,7 @@ const GlobalState = (props) => {
                 alert("Deu erro!")
             })
     }
+
 
     const states = { pokelist }
     const setters = { setPokelist }

@@ -5,6 +5,7 @@ import { BASE_URL } from "../constants/url"
 
 const GlobalState = (props) => {
     const [ pokelist, setPokelist ] = useState([])
+    const [ pokedex, setPokedex] = useState([]);
 
 
     const listPokemons = () => {
@@ -18,8 +19,8 @@ const GlobalState = (props) => {
             })
     }
 
-    const states = { pokelist }
-    const setters = { setPokelist }
+    const states = { pokelist, pokedex }
+    const setters = { setPokelist, setPokedex }
     const requests = { listPokemons }
 
     return (

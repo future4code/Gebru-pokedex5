@@ -16,9 +16,11 @@ const Container = styled.div`
 
 export function HomePage (){
     const navigate = useNavigate()
-    const { states, requests } = useContext(GlobalStateContext)
+    const { states, setters, requests } = useContext(GlobalStateContext)
     const pokelist = states
     const listPokemons = requests
+    const pokedex = states
+    const setPokedex = setters
 
     useEffect(() => {
        listPokemons()
@@ -27,9 +29,15 @@ export function HomePage (){
 
     console.log(pokelist)
 
+    const addPokeToPokedex = (newPoke) => {
+        const newPokedex = [...pokedex]
+        newPokedex.push(newPoke)
+        setPokedex(newPokedex)
+    }
+
    
     const renderedPokemons = pokelist && pokelist.map((poke) => {
-        return <Card key={poke.name} id={poke.name} pokemon={poke} />
+        return <Card key={poke.name} id={poke.name} pokemon={poke} addPokeToPokedex={addPokeToPokedex} />
     })
     
     return(

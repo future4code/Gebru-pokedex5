@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React from 'react';
 import { BiggerContainer, SmallerContainer, StatsCard, GeneralStyledDiv } from './StyledCard';
 
 
@@ -13,10 +13,10 @@ function Card(props) {
           <StatsCard>
             {props.pokemon.name.toUpperCase()}
           </StatsCard>
-          <button onClick={() => {addPokeToPokedex(props.pokemon)}}>ADICIONAR A POKEDEX</button>
+          <button onClick={() => {props.addPokeToPokedex(props.pokemon)}}>ADICIONAR A POKEDEX</button>
 
         </BiggerContainer>
-        <button> ${Remover} </button>
+        <button>Remover</button>
         <button></button>
     </GeneralStyledDiv>
   )

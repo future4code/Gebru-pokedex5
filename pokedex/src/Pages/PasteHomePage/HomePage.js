@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
 import {useNavigate} from "react-router-dom"
-import Card from "../../components/PasteCard/Card"
+import Card from "../../Components/PasteCard/Card"
 import {goToPokedexPage, goToDetailPage} from "../Router/Coodinator"
 import styled from "styled-components";
 import axios from "axios"
-import { BASE_URL } from "../constants/url"
+import { UrlBase } from "../../Constants/Urls/UrlBase"
 
 const Container = styled.div`
     display: flex;
@@ -17,15 +17,8 @@ const Container = styled.div`
 
 export function HomePage (){
     const navigate = useNavigate()
-
-
-    const { states, requests } = useContext(GlobalStateContext)
-    const pokelist = states.pokelist
-
-
-    const listPokemons = requests
-    const pokedex = states
-    const setPokedex = setters
+    const [ pokelist, setPokelist ] = useState([])
+    const [ pokedex, setPokedex] = useState([]);
 
     useEffect(() => {
        listPokemons()
@@ -33,7 +26,7 @@ export function HomePage (){
 
     const listPokemons = () => {
         axios
-            .get(`${BASE_URL}?limit=20`)
+            .get(`${UrlBase}?limit=20`)
             .then((res) => {
                 setPokelist(res.data.results)
             })
@@ -54,7 +47,7 @@ export function HomePage (){
 
         return(
             <div>
-                <Card key={poke.name} id={poke.name} pokemon={poke} />
+                <Card key={poke.name} id={poke.name} pokemon={poke} addPokeToPokedex={addPokeToPokedex} />
             </div>
         )
 

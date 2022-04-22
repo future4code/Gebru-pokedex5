@@ -1,8 +1,5 @@
 import React, {useEffect} from "react";
-import { useNavigate } from "react-router-dom";
-
-import {useRequestData} from "../../Hooks/useRequestData"
-import {UrlBase} from "../../Constants/Urls/UrlBase"
+import { useNavigate } from "react-router-dom"; 
 
 import {goToHomePage} from "../Router/Coodinator"
 import Home from "../../Constants/Image/Home.png"
@@ -14,17 +11,28 @@ import {ContainerPokedex, ContainerButton, PositionButton} from "./StyledPokedex
 export function PokedexPage (props){
     const navigate = useNavigate()
 
-    // const {arrayPokemonMatch, setArrayPokemonMatch} = props
-    
-    const arrayPokemonMatch = [1, 2, 4, 25, 50, 100]
+    const {ListPokemon, setListPokemon} = props
 
-    const renderedPokemon = arrayPokemonMatch && arrayPokemonMatch.map((pokemon) => {
-        return(
-            <div>
-                <Card key={pokemon} 
-                    name={pokemon}
-                />  
-            </div>
+    const removePokemonfromPokedex = (pokemonToRemove) => {
+        const index = cart.findIndex((i) => i.id === pokemonToRemove.id)
+
+        const newListPokemon = [...ListPokemon]
+
+        if(newListPokemon[index].amount === 1){
+
+            newListPokemon.splice(index, 1)
+        }
+
+        setListPokemon(newListPokemon)
+    }
+
+    const renderedPokemon = arrayPokemonMatch.map((poke) => {
+        return(   
+            <Card 
+                key={poke.name}
+                name={poke}
+                removePokemonfromPokedex={removePokemonfromPokedex}
+            />    
         )  
     })
 

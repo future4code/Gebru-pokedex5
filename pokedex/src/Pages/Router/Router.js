@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-
 import { HomePage } from "../PasteHomePage/HomePage"
 import { DetailPage } from "../PasteDetailPage/DetailPage"
 import { PokedexPage } from "../PastePokedexPage/PokedexPage"

@@ -6,7 +6,7 @@ import GlobalState from './global/GlobalState'
 function App() {
   return (
     <GlobalState>
-      <Header />
+       <Header />
       <Router />
     </GlobalState>
   );

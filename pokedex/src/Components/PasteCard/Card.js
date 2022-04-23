@@ -13,11 +13,10 @@ function Card(props) {
           <StatsCard>
             {props.pokemon.name.toUpperCase()}
           </StatsCard>
-          <button onClick={() => {props.addPokeToPokedex(props.pokemon)}}>ADICIONAR A POKEDEX</button>
-
+          <button onClick={() => {props.addPokeToPokedex(props.pokemon)}}>Adicionar</button>
+          <button>Remover</button>
         </BiggerContainer>
-        <button>Remover</button>
-        <button></button>
+        
     </GeneralStyledDiv>
   )
 }

@@ -9,7 +9,7 @@ import { UrlBase } from "../../Constants/Urls/UrlBase"
 const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 40px;
 
 `
@@ -42,6 +42,7 @@ export function HomePage (){
         setPokedex(newPokedex)
     }
 
+    console.log(pokedex)
    
     const renderedPokemons = pokelist && pokelist.map((poke) => {
 

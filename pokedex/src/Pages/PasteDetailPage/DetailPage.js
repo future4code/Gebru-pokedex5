@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import useRequestData from "../../hooks/useRequestData";
-import { BASE_URL } from "../../constants/url";
+import useRequestData from "../../Hooks/useRequestData";
+import { UrlBase } from "../../Constants/Urls/UrlBase";
 import { useParams } from "react-router-dom";
-import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ProgressBar from "../../Components/ProgressBar/ProgressBar";
 import { CardPokemonDetail, TypeContainer, CardStatsPoke, ButtonContainer, SkillContainer } from './StyledDetailPage'
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import PokemonTypes from "../../components/PokemonTypes/PokemonTypes";
+import PokemonTypes from "../../Components/PokemonTypes/PokemonTypes";
 import { ScrollArea } from '@mantine/core';
 
 export const DetailPage = () => {
     const pathParams = useParams();
-    const pokemon = useRequestData({}, `${BASE_URL}${pathParams.id}`)[0];
+    const pokemon = useRequestData({}, `${UrlBase}${pathParams.id}`)[0];
     const [currentInfo, setCurrentInfo] = useState("Estatísticas")
 
     const statList =

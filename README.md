@@ -17,12 +17,12 @@ Utilizamos algumas bibliotecas como React Router Dom, Styled Components, Axios, 
 Optamos por manter uma interface limpa e com cores referentes à pokebola.
 
 # Funcionalidades
-✅ Troca de páginas utilizando rotas 
+✅ Troca de páginas utilizando rotas </p>
 ✅ Adicionar ou remover pokémon
 
 
 # O que não funciona
-❌ Página de Detalhes
+❌ Página de Detalhes </p>
 ❌ Ao adicionar o pokémon, o mesmo não some da tela Home
 
 

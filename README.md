@@ -8,7 +8,7 @@ Nome dos integrantes:
 - Lucas Coimbra
 
 
-Essa aplicação consiste em um site de pokémons que são adicionados ou removidos da Pokédex.
+Essa aplicação consiste em um site de pokémons que são adicionados ou removidos da Pokédex.</p>
 Foram criadas duas páginas no total, uma sendo a Home, com pokémons da API sugerida para o projeto, outra sendo a Pokédex, com os pokémons que foram adicionados anteriormente.
 
 

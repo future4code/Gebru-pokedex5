@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
-import { useNavigate } from "react-router-dom"; 
+import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 import {goToHomePage} from "../Router/Coodinator"
 import Home from "../../Constants/Image/Home.png"
@@ -10,35 +11,41 @@ import {ContainerPokedex, ContainerButton, PositionButton} from "./StyledPokedex
 
 export function PokedexPage (props){
     const navigate = useNavigate()
-
-    const {ListPokemon, setListPokemon} = props
+    const { pokedex, setPokedex} = props
 
     const removePokemonfromPokedex = (pokemonToRemove) => {
-        const index = cart.findIndex((i) => i.id === pokemonToRemove.id)
+        const index = pokedex.findIndex((i) => i.id === pokemonToRemove.id)
 
-        const newListPokemon = [...ListPokemon]
+        const newListPokedex = [...pokedex]
+        
 
-        if(newListPokemon[index].amount === 1){
+        if(newListPokedex[index].amount === 1){
 
-            newListPokemon.splice(index, 1)
+            newListPokedex.splice(index, 1)
         }
 
-        setListPokemon(newListPokemon)
+        setPokedex(newListPokedex)
     }
 
-    const renderedPokemon = arrayPokemonMatch.map((poke) => {
-        return(   
-            <Card 
-                key={poke.name}
-                name={poke}
-                removePokemonfromPokedex={removePokemonfromPokedex}
-            />    
+    console.log(pokedex)
+
+    const renderedPokemon = pokedex.map((poke) => {
+        return(
+                <Card 
+                    key={poke.name}
+                    id={poke.name}
+                    name={poke.name}
+                    pokemon={poke}
+                    addOuRemoverPokedex={removePokemonfromPokedex}
+                    funcao={'REMOVER POKEDEX'}
+                />
         )  
     })
 
     return(
-        <ContainerPokedex>   
-            {renderedPokemon}
+        <ContainerPokedex>
+            {renderedPokemon}   
+        
             <PositionButton>
                 <ContainerButton onClick={() => goToHomePage(navigate)}> 
                     <img width='30px' src={Home} alt="HOME"/>
@@ -48,5 +55,3 @@ export function PokedexPage (props){
         </ContainerPokedex>
     )
 }
-
-{/* <a href="https://www.flaticon.com/br/icones-gratis/botao-home" title="botão home ícones">Botão home ícones criados por inkubators - Flaticon</a> */}

@@ -1,23 +1,21 @@
 
 import React from 'react';
-import { BiggerContainer, SmallerContainer, StatsCard, GeneralStyledDiv } from './StyledCard';
-
+import { BiggerContainer, SmallerContainer, StatsCard, GeneralStyledDiv, ContainerButton, ContainerButtonIndividual } from './StyledCard';
 
 function Card(props) {
 
   return (
     <GeneralStyledDiv>
         <BiggerContainer>
-
           <SmallerContainer src={props.pokemon.name} alt={props.pokemon.name}/>
           <StatsCard>
-            {props.pokemon.name.toUpperCase()}
+            <b> {props.pokemon.name.toUpperCase()} </b>
           </StatsCard>
-          <button onClick={() => {props.addPokeToPokedex(props.pokemon)}}>ADICIONAR A POKEDEX</button>
-
+          <ContainerButton>
+            <ContainerButtonIndividual onClick={() => {props.addOuRemoverPokedex(props.pokemon)}}> <b> {props.funcao} </b></ContainerButtonIndividual>
+            <ContainerButtonIndividual> <b> DETALHES </b> </ContainerButtonIndividual>
+          </ContainerButton>
         </BiggerContainer>
-        <button>Remover</button>
-        <button></button>
     </GeneralStyledDiv>
   )
 }

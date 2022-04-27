@@ -1,9 +1,9 @@
 import {useState} from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import { HomePage } from "../PasteHomePage/HomePage"
-import { DetailPage } from "../PasteDetailPage/DetailPage"
-import { PokedexPage } from "../PastePokedexPage/PokedexPage"
+import { HomePage } from "../Pages/PasteHomePage/HomePage"
+import { DetailPage } from "../Pages/PasteDetailPage/DetailPage"
+import { PokedexPage } from "../Pages/PastePokedexPage/PokedexPage"
 
 const Router = () => {
     const [ pokedex, setPokedex] = useState([]);

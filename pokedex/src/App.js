@@ -1,13 +1,12 @@
 import React from "react";
-import Router from "./Pages/Router/Router";
-import Header from "./Components/PasteHeader/Header";
+import Router from "../src/Router/Router"
+import GlobalState from "./global/GlobalState";
 
 function App() {
   return (
-    <>
-       <Header />
-      <Router />
-    </>
+    <GlobalState>
+    <Router />
+  </GlobalState>
   );
 }
 

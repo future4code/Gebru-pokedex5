@@ -1,71 +1,93 @@
-import React, { useState } from "react";
-import useRequestData from "../../Hooks/useRequestData";
-import { UrlBase } from "../../Constants/Urls/UrlBase";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProgressBar from "../../Components/ProgressBar/ProgressBar";
-import { CardPokemonDetail, TypeContainer, CardStatsPoke, ButtonContainer, SkillContainer } from './StyledDetailPage'
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import PokemonTypes from "../../Components/PokemonTypes/PokemonTypes";
-import { ScrollArea } from '@mantine/core';
+import {GlobalStateContext} from "../../global/GlobalStateContext";
+import {
+  TypeAndMovesContainer,
+  PokeInfosContainer,
+  ImgWrapper,
+  ImagesContainer,
+  StatsContainer,
+  TitleContainer,
+  TypesContainer,
+  MovesContainer
+} from "./StyledDetailPage";
+import Header from "../../components/PasteHeader/Header";
+import { BASE_URL } from "../../Constants/Urls/UrlBase";
+import {goToPokedexPage} from "../../Router/Coodinator"
+import {useNavigate} from "react-router-dom"
+import axios from "axios";
 
 export const DetailPage = () => {
-    const pathParams = useParams();
-    const pokemon = useRequestData({}, `${UrlBase}${pathParams.id}`)[0];
-    const [currentInfo, setCurrentInfo] = useState("Estatísticas")
-
-    const statList =
-        pokemon.stats &&
-        pokemon.stats.map((statPoke) => {
-            return (
-                <TypeContainer>
-                    <ProgressBar
-                        key={statPoke.stat.name}
-                        statText={statPoke.stat.name}
-                        value={(statPoke.base_stat / 255) * 100}
-                        label={statPoke.base_stat}
-                    />
-                </TypeContainer>
-            );
+    const navigate = useNavigate()
+    const { name, telaPokedex } = useParams();
+    const { pokemons, pokedex } = useContext(GlobalStateContext);
+    const [selectedPokemon, setSelectedPokemon] = useState({});
+  
+    useEffect(() => {
+      let current = [];
+      if (telaPokedex) {
+        current = pokedex.find((item) => {
+          return item.name === name;
         });
-
-    const pokeType = pokemon.types && pokemon.types.map((type) => {
-        return (<div>
-            <PokemonTypes element={type.type.name} />
-        </div>)
-    })
-
-    const pokeSkills = pokemon.moves && pokemon.moves.map((move) => {
-        return <Typography sx={{ margin: '0.75rem', '@media (max-width: 450px)': { margin: '0.5rem' } }}>{move.move.name.toUpperCase()}</Typography>
-    })
-
-    const onClickButton = (buttonName) => {
-        setCurrentInfo(buttonName)
-    }
-
+      } else {
+        current = pokemons.find((item) => {
+          return item.name === name;
+        });
+      }
+  
+      if (!current) {
+        axios
+          .get(`${BASE_URL}/pokemon/${name}`)
+          .then((res) => setSelectedPokemon(res.data))
+          .catch((err) => console.log(err.response.message));
+      } else {
+        setSelectedPokemon(current);
+      }
+    }, []);
+  
     return (
-        <CardPokemonDetail>
-            <Typography variant='h4' color='#5F5950' sx={{ mt: '2%' }}>{pokemon.name && pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</Typography>
-            <img
-                src={
-                    pokemon.sprites &&
-                    pokemon.sprites.other["official-artwork"].front_default
-                }
-                alt="Pokemons imagens"
-            />
-            <ButtonContainer>
-                <Button sx={{ width: '180px' }} variant="contained" onClick={() => onClickButton("Estatísticas")}>Estatísticas</Button>
-                <Button sx={{ width: '180px' }} variant="contained" onClick={() => onClickButton("Tipos")}>Tipos</Button>
-                <Button sx={{ width: '180px' }} variant="contained" onClick={() => onClickButton("Habilidades")}>Habilidades</Button>
-            </ButtonContainer>
-            <CardStatsPoke>
-                {currentInfo === "Estatísticas" && statList}
-                <TypeContainer>
-                    {currentInfo === "Tipos" && pokeType}
-                </TypeContainer>
-                {currentInfo === "Habilidades" && (<ScrollArea style={{ height: 250 }}><SkillContainer>{pokeSkills}</SkillContainer></ScrollArea>)}
-            </CardStatsPoke>
-        </CardPokemonDetail>
+      <div>
+        <Header
+           leftButtonFunction={() => goToPokedexPage(navigate)}/>
+        {selectedPokemon && selectedPokemon.sprites && (
+          <PokeInfosContainer>
+            <ImagesContainer>
+              <ImgWrapper src={selectedPokemon.sprites.front_default} />
+              <ImgWrapper src={selectedPokemon.sprites.back_default} />
+            </ImagesContainer>
+            <StatsContainer>
+              <TitleContainer>Poderes</TitleContainer>
+              {selectedPokemon &&
+                selectedPokemon.stats.map((stat) => {
+                  return (
+                    <p key={stat.stat.name}>
+                      <strong>{stat.stat.name}: </strong>
+                      {stat.base_stat}
+                    </p>
+                  );
+                })}
+            </StatsContainer>
+            <TypeAndMovesContainer>
+              <TypesContainer>
+                {selectedPokemon &&
+                  selectedPokemon.types.map((type) => {
+                    return <p key={type.type.name}>{type.type.name}</p>;
+                  })}
+              </TypesContainer>
+              <MovesContainer>
+                <TitleContainer>Principais ataques</TitleContainer>
+                {selectedPokemon &&
+                  selectedPokemon.moves.map((move, index) => {
+                    return (
+                      index < 5 && <p key={move.move.name}>{move.move.name}</p>
+                    );
+                  })}
+              </MovesContainer>
+            </TypeAndMovesContainer>
+          </PokeInfosContainer>
+        )}
+      </div>
     );
-};
-
+  };
+  
+  

@@ -1,52 +1,32 @@
+
 import styled from "styled-components";
 
 
-export const GeneralStyledDiv = styled.div`
+export const CardContainer = styled.div`
+  height: 35vh;
+  width: 250px;
+  margin: 10px;
+  display: grid;
+  grid-template-rows: 90% 10%;
+`;
+
+export const ImgContainer = styled.div`
+  background:  #eff0f4;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-` 
-export const BiggerContainer = styled.div`
-  background-color: #eff0f4;
-  width: 33vh;
-  height: 40vh;
-  box-shadow: 0px 0px 5px;
-  padding: 10px;
-  border-radius: 5px;
-`;
-export const SmallerContainer = styled.img`
- display: flex;
- justify-content: center;
-
- margin-top: 30px;
- width: 50%;
- height: 60%;
 `;
 
-export const StatsCard = styled.div`
- /* background-color: white; */
- width: 100%;
- height: 10%;
- border-radius: 5px;
- text-align: center;
- font-family: sans-serif;
- font-size: 20px;
-`
+export const PokeImg = styled.img`
+  height: 100%;
+`;
 
-export const ContainerButton = styled.div`
+export const ButtonsContainer = styled.div`
   display: flex;
-  padding: 8% 0px;
-`
-
-export const ContainerButtonIndividual = styled.button`
-  background-color: #eff0f4;
-
-  width: 50%;
-  border: 1px solid black;
-  box-shadow: 0px 0px 5px gray;
-
-  :hover{
-    background-color: gray;
-    color: yellow;
+  align-items: center;
+  justify-content:center;
+  width: 100%;
   }
-`
+`;
+
+ 

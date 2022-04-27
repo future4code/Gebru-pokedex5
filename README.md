@@ -27,4 +27,5 @@ Optamos por manter uma interface limpa e com cores referentes à pokebola.
 
 
 # Link Surge
-gebru-pokedex-5.surge.sh
+ flippant-servant.surge.sh
+

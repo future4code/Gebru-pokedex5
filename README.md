@@ -23,7 +23,6 @@ Optamos por manter uma interface limpa e com cores referentes à pokebola.
 
 # O que não funciona
 ❌ Página de Detalhes </p>
-❌ Ao adicionar o pokémon, o mesmo não some da tela Home </p>
 ❌ Responsividade
 
 

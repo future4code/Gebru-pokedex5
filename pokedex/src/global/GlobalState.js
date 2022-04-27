@@ -1,37 +1,57 @@
-// import React, { useState } from "react"
-// import { GlobalStateContext } from "../global/GlobalStateContext"
-// import axios from "axios"
-// import { BASE_URL } from "../constants/url"
+import React, { useEffect, useState } from "react"
+ import { GlobalStateContext } from "../global/GlobalStateContext";
+import axios from "axios"
+import { BASE_URL } from "../Constants/Urls/UrlBase"
 
-// const GlobalState = (props) => {
-//     const [ pokelist, setPokelist ] = useState([])
-//     const [ pokedex, setPokedex] = useState([]);
-
-//     const listPokemons = () => {
-//         axios
-//             .get(`${BASE_URL}?limit=20`)
-//             .then((res) => {
-//                 setPokelist(res.data.results)
-//             })
-//             .catch((err) => {
-//                 alert("Deu erro!")
-//             })
-//     }
-
-
-//     const states = { pokelist }
-//     const setters = { setPokelist }
-
-//     const states = { pokelist, pokedex }
-//     const setters = { setPokelist, setPokedex }
-
-
-//     return (
-//         <GlobalStateContext.Provider value={{ states, setters, requests }}>
-//             {props.children}
-//         </GlobalStateContext.Provider>
-//     )
-
-// }
-
-// export default GlobalState
+const GlobalState = (props) => {
+    const [pokemonNames, setPokemonNames] = useState([]);
+    const [pokemons, setPokemons] = useState([]);
+    const [pokedex, setPokedex] = useState([]);
+  
+    useEffect(() => {
+      getPokemonNames();
+    }, []);
+  
+    useEffect(() => {
+      const newList = [];
+      pokemonNames.forEach((item) => {
+        axios
+          .get(`${BASE_URL}/pokemon/${item.name}`)
+          .then((response) => {
+            newList.push(response.data);
+            if (newList.length === 20) {
+              const orderedList = newList.sort((a, b) => {
+                return a.id - b.id;
+              });
+              setPokemons(orderedList);
+            }
+          })
+          .catch((error) => console.log(error.message));
+      });
+    }, [pokemonNames]);
+  
+    const getPokemonNames = () => {
+      axios
+        .get(`${BASE_URL}/pokemon?limit=20`)
+        .then((response) => {
+          setPokemonNames(response.data.results);
+        })
+        .catch((error) => console.log(error.message));
+    };
+  
+    const data = {
+      pokemons,
+      setPokemons,
+      pokedex,
+      setPokedex
+    };
+  
+    return (
+      <GlobalStateContext.Provider value={data}>
+        {props.children}
+      </GlobalStateContext.Provider>
+    );
+  };
+  
+  export default GlobalState;
+  

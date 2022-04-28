@@ -1,16 +1,31 @@
-# POKEDEX
+# Pokedex
 
-Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+Nome dos integrantes:
 
-Link do Surge: www.link.com.br
+- Ana Flávia Gomez
+- Camila Graciano
+- Mileny Faria
+- Lucas Coimbra
 
-O que funciona:
-- Item 1
-- Item 2
 
-O que não funciona: 
-- Item 3
-- Item 4
+Essa aplicação consiste em um site de pokémons que são adicionados ou removidos da Pokédex.</p>
+Foram criadas duas páginas no total, uma sendo a Home, com pokémons da API sugerida para o projeto, outra sendo a Pokédex, com os pokémons que foram adicionados anteriormente.
+
+
+Utilizamos algumas bibliotecas como React Router Dom, Styled Components, Axios, Material UI e Mantine.
+
+Optamos por manter uma interface limpa e com cores referentes à pokebola.
+
+# Funcionalidades
+✅ Troca de páginas utilizando rotas </p>
+✅ Adicionar ou remover pokémon
+
+
+# O que não funciona
+❌ Página de Detalhes </p>
+❌ Responsividade
+
+
+# Link Surge
+ flippant-servant.surge.sh
+
